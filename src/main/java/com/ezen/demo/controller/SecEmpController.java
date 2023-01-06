@@ -11,7 +11,7 @@ public class SecEmpController {
 	public String loginForm(String logout) {
 		System.out.println("logout:"+logout);
 		
-		return "thymeleaf/index";
+		return "thymeleaf/loginForm";
 	}
 	@GetMapping("/menu")
 	public String menuForm() {
