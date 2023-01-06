@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>INDEX</title>
+</head>
+<body>
+<h2>Welcome</h2>
+        <p>Spring Security Thymeleaf tutorial</p>
+        <div sec:authorize="isAnonymous()">
+           You should login in for using this.
+        </div>
+        <div sec:authorize="hasRole('USER')">
+           Text visible to user.
+        </div>
+        <div sec:authorize="hasRole('ADMIN')">
+           Text visible to admin.
+        </div>
+        <div sec:authorize="hasAnyRole('ADMIN','USER')">
+           Text visible to admin or user.
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <div>Authenticated username:
+              <span sec:authentication="name"></span>
+           </div>
+           <div>Authenticated user roles:
+              <span sec:authentication="principal.authorities"></span>
+           </div>
+        </div>
+</body>
+</html>
