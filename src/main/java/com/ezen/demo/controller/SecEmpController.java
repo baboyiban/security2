@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/sec")
 public class SecEmpController {
-	@GetMapping("/loginForm")
+	@GetMapping({"","/","/loginForm"})
 	public String loginForm(String logout) {
 		System.out.println("logout:"+logout);
 		

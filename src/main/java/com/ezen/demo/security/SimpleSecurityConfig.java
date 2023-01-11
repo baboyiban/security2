@@ -12,11 +12,11 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SimpleSecurityConfig
 {
-   @Bean
+   //@Bean
    BCryptPasswordEncoder  passwordEncoder()
    {
       BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
@@ -26,13 +26,13 @@ public class SimpleSecurityConfig
        return enc;
    } 
 
-    @Bean
+    //@Bean
     WebSecurityCustomizer webSecurityCustomizer() 
     {
        return (webSecurity) -> webSecurity.ignoring().antMatchers("/resources/**", "/ignore2");
     }
 
-    @Bean
+    //@Bean
    SecurityFilterChain filterChain(HttpSecurity http) throws Exception 
     {
       System.out.println("접근제한 설정");
@@ -73,7 +73,7 @@ public class SimpleSecurityConfig
              .and().build();
     }
 
-    @Autowired 
+    //@Autowired 
     public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception 
     {
         authenticationMgr.inMemoryAuthentication() /* 메모리 기반 인증(Authentication) */
