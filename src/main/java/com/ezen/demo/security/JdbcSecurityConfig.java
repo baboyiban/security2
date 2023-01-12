@@ -69,13 +69,19 @@ public class JdbcSecurityConfig
 
 				.and()
 				//.csrf().disable()    //csrf 기능을 사용하지 않을 때
-				.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) //csrf 활성화
-				.and()
+				//.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) //csrf 활성화
+				.csrf()
+				.ignoringAntMatchers("/sec/")
+				.ignoringAntMatchers("/sec/hello")
+				.ignoringAntMatchers("/sec/loginForm")
+				//.ignoringAntMatchers("/csrf/score")
+				//.ignoringAntMatchers("/doLogin")
 				
 				//.csrf().ignoringAntMatchers("/logout") //요청시 'POST' not supported 에러 방지
 				//.ignoringAntMatchers("/sec/loginForm")
 				//.ignoringAntMatchers("/doLogin")
 
+				.and()
 				.formLogin().loginPage("/sec/loginForm")   // 지정된 위치에 로그인 폼이 준비되어야 함
 				.loginProcessingUrl("/doLogin")            // 컨트롤러 메소드 불필요, 폼 action과 일치해야 함
 				.failureUrl("/sec/login-error")      // 로그인 실패시 다시 로그인 폼으로
