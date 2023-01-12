@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import lombok.extern.slf4j.Slf4j;
@@ -67,7 +68,10 @@ public class JdbcSecurityConfig
 				.anyRequest().permitAll()        // 위의 설정 이외의 모든 요청은 인증 요구하지 않음
 
 				.and()
-				.csrf().disable()    //csrf 기능을 사용하지 않을 때
+				//.csrf().disable()    //csrf 기능을 사용하지 않을 때
+				.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) //csrf 활성화
+				.and()
+				
 				//.csrf().ignoringAntMatchers("/logout") //요청시 'POST' not supported 에러 방지
 				//.ignoringAntMatchers("/sec/loginForm")
 				//.ignoringAntMatchers("/doLogin")
