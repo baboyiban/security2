@@ -75,7 +75,7 @@ public class JdbcSecurityConfig
 				.ignoringAntMatchers("/sec/hello")
 				.ignoringAntMatchers("/sec/loginForm")
 				//.ignoringAntMatchers("/csrf/score")
-				//.ignoringAntMatchers("/doLogin")
+				.ignoringAntMatchers("/doLogin")
 				
 				//.csrf().ignoringAntMatchers("/logout") //요청시 'POST' not supported 에러 방지
 				//.ignoringAntMatchers("/sec/loginForm")

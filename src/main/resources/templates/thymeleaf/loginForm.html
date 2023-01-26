@@ -9,7 +9,7 @@
 	<h2>Welcome</h2>
 	<p>Spring Security Thymeleaf tutorial</p>
 	<div sec:authorize="isAnonymous()">
-		You should login in for using this.
+		<p th:text="${(loginError==null or !loginError)?'You should login in for using this.':'loginError'}" th:style="${(loginError==null or !loginError)?'':'color:red;'}"></p>
 		<form action="/doLogin" method="post">
 			<div>
 				<input name="id">

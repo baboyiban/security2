@@ -1,7 +1,9 @@
 package com.ezen.demo.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,5 +18,11 @@ public class SecEmpController {
 	@GetMapping("/menu")
 	public String menuForm() {
 		return "thymeleaf/menu";
+	}
+	
+	@GetMapping("/login-error")
+	public String fail(Model m) {
+		m.addAttribute("loginError", true);
+		return "thymeleaf/loginForm";
 	}
 }
